@@ -39,15 +39,13 @@ trigger EventSpeakerTrigger on EventSpeakers__c (before insert, before update ) 
     // Step 3 - End 
     
     // Step 4 - Start
-    for( EventSpeakers__c es : Trigger.New ){ // - Salesforce Geek
+    for( EventSpeakers__c es : Trigger.New ){ 
         
         DateTime bookingTime = requestedEvents.get(es.Event__c); 
         // DateTime for that event which is associated with this new Event-Speaker Record
         
         for(EventSpeakers__c es1 : relatedEventSpeakerList) {
-            // Amit Singh == Salesforce Geek => false
-            // Amit Choudhary == Salesforce Geek => false
-            // Salesforce Geek == Salesforce Geek => true
+            
             if(es1.Speaker__c == es.Speaker__c && es1.Event__r.Start_DateTime__c == bookingTime ){
                 es.Speaker__c.addError('The speaker is already booked at that time');
                 es.addError('The speaker is already booked at that time');
