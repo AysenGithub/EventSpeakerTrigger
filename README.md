@@ -56,7 +56,7 @@ List<EventSpeakers__c> relatedEventSpeakerList = [ SELECT Id, Event__c,
 ```
 
 // Step 4
-for( EventSpeakers__c es : Trigger.New ){ // - Salesforce Geek
+for( EventSpeakers__c es : Trigger.New ){ 
         
        DateTime bookingTime = requestedEvents.get(es.Event__c); 
 // DateTime for that event which is associated with this new Event-Speaker Record
